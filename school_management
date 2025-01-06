@@ -1,0 +1,28 @@
+CREATE DATABASE SchoolManagement;
+
+USE SchoolManagement;
+
+-- Bảng Học Sinh
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY IDENTITY,
+    FullName NVARCHAR(100) NOT NULL,
+    DateOfBirth DATE NOT NULL,
+    Class NVARCHAR(50) NOT NULL,
+    Contact NVARCHAR(50) NOT NULL
+);
+
+-- Bảng Giáo Viên
+CREATE TABLE Teachers (
+    TeacherID INT PRIMARY KEY IDENTITY,
+    FullName NVARCHAR(100) NOT NULL,
+    Subject NVARCHAR(50) NOT NULL,
+    Contact NVARCHAR(50) NOT NULL
+);
+
+-- Bảng Lớp
+CREATE TABLE Classes (
+    ClassID INT PRIMARY KEY IDENTITY,
+    ClassName NVARCHAR(50) NOT NULL,
+    TeacherID INT NOT NULL,
+    FOREIGN KEY (TeacherID) REFERENCES Teachers(TeacherID)
+);
